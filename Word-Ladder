@@ -1,7 +1,7 @@
 public class Solution {
     public int ladderLength(String start, String end, HashSet<String> dict) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+      // Start typing your Java solution below
+      // DO NOT write main() function
       if(dict.isEmpty()) return 0;
 	    if(start.equals(end)) return 0;
 	    HashSet<String> searched = new HashSet<String>();
