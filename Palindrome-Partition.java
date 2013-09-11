@@ -2,7 +2,6 @@ public class Solution {
     public ArrayList<ArrayList<String>> partition(String s) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        //ArrayList<ArrayList<String>> pal = new ArrayList<ArrayList<String>>();
         if(s.length() == 0) return new ArrayList<ArrayList<String>>();
         boolean[][] isPal = new boolean[s.length()][s.length()];
         ArrayList<ArrayList<ArrayList<String>>> pal = new ArrayList<ArrayList<ArrayList<String>>>();
