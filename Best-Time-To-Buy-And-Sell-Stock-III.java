@@ -19,3 +19,6 @@ public class Solution {
         return maxTotal;
     }
 }
+
+//extend to m transactions:
+//http://discuss.leetcode.com/questions/287/best-time-to-buy-and-sell-stock-iii
