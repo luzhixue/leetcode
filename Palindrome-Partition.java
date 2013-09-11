@@ -21,9 +21,9 @@ public class Solution {
                 }
                 if(isPal[i][j]){
                     if(j-1 < 0){
-                        	ArrayList<String> str = new ArrayList<String>();
-	                    	str.add(s.substring(j,i+1));
-	                    	list.add(str);
+                        ArrayList<String> str = new ArrayList<String>();
+	                str.add(s.substring(j,i+1));
+	                list.add(str);
                     }else{
                         for(ArrayList<String> str: pal.get(j-1)){
                             ArrayList<String> newStr = (ArrayList<String>)str.clone();
