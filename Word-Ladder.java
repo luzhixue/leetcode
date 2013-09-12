@@ -17,7 +17,7 @@ public class Solution {
 				StringBuffer sb = new StringBuffer(word);//faster
 				char newCh = 'a';
 					while(newCh <= 'z'){
-		                  		//String newWord = word.substring(0,k) + String.valueOf(newCh) + word.substring(k+1);
+					//String newWord = word.substring(0,k) + String.valueOf(newCh) + word.substring(k+1);
 						sb.setCharAt(k, newCh);
 						String newWord = sb.toString();
 		    	     			if(newWord.equals(end))	return step;
