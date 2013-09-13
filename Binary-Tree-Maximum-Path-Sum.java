@@ -20,24 +20,17 @@ public class Solution {
     }
     
     private int maxVal(TreeNode node){
-        if(node.left == null && node.right == null){
-            maxSum = Math.max(maxSum, node.val);
-            return node.val;
+        if(node == null){
+            return 0;
         }
-        int leftSum = 0, rightSum = 0;
-        if(node.left != null){
-            leftSum = maxVal(node.left);
-        }
-        if(node.right != null){
-            rightSum = maxVal(node.right);
-        }
+        int leftSum = maxVal(node.left);
+        int rightSum = maxVal(node.right);
         //three paths start at node
         int path1 = leftSum + node.val;
         int path2 = rightSum + node.val;
         int path3 = node.val;
         //the maximum path goes through node: path1, path2, path3 or combine together
-        int maxPath = Math.max(path1,path2);
-        maxPath = Math.max(maxPath,path3);
+        int maxPath = Math.max(Math.max(path1,path2),path3);
         maxPath = (path1+path2-node.val > maxPath)?path1+path2-node.val:maxPath;
         maxSum = Math.max(maxSum, maxPath);
         //the maximum single path (not combined) is returned to parents
