@@ -45,11 +45,9 @@ public class Solution {
             if(find) break;
             curLevel = nextLevel;
         }
-        
         ArrayList<String> curPath = new ArrayList<String>();
         DFS(paths, start, end, nextHop, curPath);
         return paths;
-   
     }
     
     private void DFS(ArrayList<ArrayList<String>> paths, String curWord, String end,  HashMap<String, ArrayList<String>> nextHop, ArrayList<String> curPath){
@@ -59,13 +57,11 @@ public class Solution {
             curPath.remove(curPath.size()-1);//Note: need to pop the keyword in DFS
             return;
         }
-        else{
-            ArrayList<String> nextWords = nextHop.get(curWord);
-            if(nextWords == null || nextWords.size() == 0) return;
-            curPath.add(curWord);
-            for(String newWord: nextWords)
-                DFS(paths, newWord, end, nextHop, curPath);
-            curPath.remove(curPath.size()-1);//Note: need to pop the keyword in DFS
-        }
+        ArrayList<String> nextWords = nextHop.get(curWord);
+        if(nextWords == null || nextWords.size() == 0) return;
+        curPath.add(curWord);
+        for(String newWord: nextWords)
+            DFS(paths, newWord, end, nextHop, curPath);
+        curPath.remove(curPath.size()-1);//Note: need to pop the keyword in DFS
     }
 }
