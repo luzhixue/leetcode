@@ -36,7 +36,7 @@ public class Solution {
     }
 }
 //BFS in general performs better. We can use Queue<TreeNode> queue = new LinkedList<TreeNode>(); to cliam a queue in java
-//queue.peek  queue.off(node)   queue.poll()   to test, add, delement element
+//queue.peek  queue.offer(node)   queue.poll()   to test, add, delement element
 //for DFS, we can improve by keeping a curDepth, and a curMinDepth, then prone the subtree if it is deeper than the known curMinDepth
 
 //http://n00tc0d3r.blogspot.com/2013/04/minimum-depth-of-binary-tree.html
