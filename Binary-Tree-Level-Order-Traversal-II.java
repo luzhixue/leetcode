@@ -1,4 +1,4 @@
-/**
+ /**
  * Definition for binary tree
  * public class TreeNode {
  *     int val;
@@ -7,6 +7,37 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+public class Solution {
+    public ArrayList<ArrayList<Integer>> levelOrderBottom(TreeNode root) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
+        if (root == null) return list;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        ArrayList<Integer> curList = new ArrayList<Integer>();
+        queue.offer(root);
+        int levelNum = 0, totalNum = 1;
+        while(queue.peek() != null){
+            TreeNode node = queue.poll();
+            ++levelNum;
+            curList.add(node.val);
+            if(node.left != null){
+                queue.offer(node.left);
+            }
+            if(node.right != null){
+                queue.offer(node.right);
+            }
+            if(levelNum == totalNum){
+                list.add(0,curList);
+                curList = new ArrayList<Integer>();
+                totalNum = queue.size();
+                levelNum = 0;
+            }
+        }
+        return list;
+    }
+}
+ 
+ 
  
 //using array, better to use a queue
 public class Solution {
