@@ -36,26 +36,7 @@ public class Solution {
 
 
 
-
-//recursive solution: O(2^n)
-//compare first character, if equal, recursively compare word1 (2-n) and word 2 (2-m)
-//if not equal, either insert or replace, based on the recursive result, use the min value of the two
-
-public class Solution {
-    public int minDistance(String word1, String word2) {
-        // Note: The Solution object is instantiated only once and is reused by each test case.
-        if(word1 == null && word2 == null) return 0;
-        if(word1 == null) return word2.length();
-        if(word2 == null) return word1.length();
-        return minDist(word1, 0, word2, 0);
-    }
-    
-    private int minDist(String word1, int idx1, String word2, int idx2){
-        if(word1.length() - idx1 == 0) return word2.length() - idx2;//insert
-        if(word2.length() - idx2 == 0) return word1.length() - idx1;//delete
-        if(word1.charAt(idx1) == word2.charAt(idx2)) return minDist(word1, idx1+1, word2, idx2+1);
-        return Math.min(minDist(word1, idx1, word2, idx2+1)+1, minDist(word1, idx1+1, word2, idx2+1)+1);
-    }
-}
+//http://n00tc0d3r.blogspot.com/2013/03/edit-distance.html
+//The size of the table can be reduced to two rows.
 
 
