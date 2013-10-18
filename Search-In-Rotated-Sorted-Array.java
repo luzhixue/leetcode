@@ -4,6 +4,7 @@
 //You may assume no duplicate exists in the array.
 
 //based on if (target > lastValue of Array), then determine to search from head or tail
+
 public class Solution {
     public int search(int[] A, int target) {
         // Note: The Solution object is instantiated only once and is reused by each test case.
@@ -25,3 +26,9 @@ public class Solution {
         }
     }
 }
+
+/*
+actually we can still do a binary search.
+see the analysis 
+http://n00tc0d3r.blogspot.com/2013/05/search-in-rotated-sorted-array.html
+*/
