@@ -1,0 +1,27 @@
+public class Solution {
+    public int numDecodings(String s) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+        if(s == null || s.length() == 0) return 0;
+        int curNum = 0, preNum = 1, prePreNum = 1;
+        for(int curIdx = 0; curIdx < s.length(); curIdx++){
+            if(curIdx == 0 || Integer.valueOf(s.substring(curIdx-1,curIdx)) <= 0 || Integer.valueOf(s.substring(curIdx-1,curIdx+1)) > 26){//cannot take double digits
+                if(Integer.valueOf(s.substring(curIdx,curIdx+1)) <=0)
+                    curNum = 0;
+                else
+                    curNum = preNum;
+                if(curNum == 0)//noway to decode
+                    break;
+            }
+            else if(Integer.valueOf(s.substring(curIdx, curIdx+1)) <= 0){//cannot take single digit
+                curNum = prePreNum;
+            }
+            else{
+                curNum = preNum + prePreNum;
+            }
+            prePreNum = preNum;
+            preNum = curNum;
+        }
+        return curNum;
+    }
+}
