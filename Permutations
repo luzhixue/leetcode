@@ -1,0 +1,37 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> permute(int[] num) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+        return recurPermute(num);
+    }
+    
+    public ArrayList<ArrayList<Integer>> recurPermute(int[] num){
+        if(num == null || num.length == 0){
+            ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
+            list.add(new ArrayList<Integer>());
+            return list;//return an empty list
+        }
+        
+        ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
+        //pick one number
+        for(int i = 0; i < num.length; i++){
+            int[] subNum = new int[num.length-1];
+            int cur = 0, j = 0;
+            while(cur < subNum.length){//copy a subnumber
+                if(j == i){
+                    ++j;
+                    continue;
+                }
+                subNum[cur] = num[j];
+                ++cur;
+                ++j;
+            }
+            ArrayList<ArrayList<Integer>> subList = recurPermute(subNum);
+            for(ArrayList<Integer> per: subList){
+                per.add(num[i]);
+                list.add(per);//add to the current list
+            }
+        }
+        return list;
+    }
+}
