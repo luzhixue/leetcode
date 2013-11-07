@@ -1,3 +1,4 @@
+//BFS search
 /**
  * Definition for binary tree
  * public class TreeNode {
@@ -7,6 +8,30 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+public class Solution {
+    public int minDepth(TreeNode root) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+        if(root == null) return 0;
+        int depth = 1;
+        ArrayList<TreeNode> curLevel = new ArrayList<TreeNode>();
+        curLevel.add(root);
+        while(curLevel != null && curLevel.size() != 0){
+            ArrayList<TreeNode> nextLevel = new ArrayList<TreeNode>();
+            for(TreeNode node : curLevel){
+                if(node.left == null && node.right == null) return depth;//find a leaf
+                if(node.left != null) nextLevel.add(node.left);
+                if(node.right != null) nextLevel.add(node.right);
+            }
+            curLevel = nextLevel;
+            ++depth;
+        }
+        return depth;
+    }
+}
+
+
+//DFS
 public class Solution {
     public int minDepth(TreeNode root) {
         // Start typing your Java solution below
