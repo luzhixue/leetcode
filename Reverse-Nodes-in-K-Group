@@ -1,0 +1,53 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        if(head == null || k <= 1) return head;
+        ListNode newHead = new ListNode(0);
+        ListNode finished = newHead, tail = null, remain = null;
+        while(head != null){
+            int count = 1;
+            tail = head;
+            while(count < k){
+                if(tail.next != null){
+                    tail = tail.next;//go to the next node
+                    ++count;
+                }
+                else
+                    break;
+            }
+            if(count < k)//we are finished, since the remaining list has less than k nodes
+                break;
+            remain = tail.next;//mark the remaining list
+            reverse(head, tail);//reverse the list from head to tail
+            finished.next = tail;//connect
+            finished = head;//move finished
+            head = remain;//start a new loop for the remaining
+        }
+        if(head != null)
+            finished.next = head;//connect the last piece
+        return newHead.next;//return the start of the list
+    }
+    
+    //reverse a linkedlist from head to tail
+    private void reverse(ListNode head, ListNode tail){
+        ListNode finished = head, cur = null, remain = head.next;
+        while(remain != tail){
+            cur = remain;
+            remain = remain.next;
+            cur.next = finished;//reverse
+            finished = cur;
+        }
+        tail.next = finished;//the last node;
+        head.next = null;
+    }
+}
