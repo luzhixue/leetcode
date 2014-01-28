@@ -16,3 +16,19 @@ public class Solution {
         return result;
     }
 }
+
+
+public class Solution {
+    public int singleNumber(int[] A) {
+        if(A == null || A.length%3 != 1) return -1;//can throw exception
+        if(A.length == 1) return A[0];
+        int one = 0, two = 0;
+        for(int i = 0; i < A.length; i++){
+            int nextOne = (~A[i] & one)|(A[i] & ~one & ~two);
+            int nextTwo = (~A[i] & two)|(A[i] & one);
+            one = nextOne;
+            two = nextTwo;
+        }
+        return one;
+    }
+}
